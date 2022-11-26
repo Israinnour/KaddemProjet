@@ -21,5 +21,6 @@ public class Etudiant implements Serializable {
     private String nomE;
     @Enumerated(EnumType.STRING)
     private Option option;
-
+    @ManyToOne(cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
+    Departement departement;
 }
