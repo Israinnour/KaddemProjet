@@ -21,6 +21,21 @@ public class EtudiantRestController {
     public Etudiant addEtudiant(@RequestBody Etudiant e){
         return etudiantService.addEtudiant(e);
     }
-
+    @PutMapping("/updateE")
+    public Etudiant updateEtudiant(@RequestBody Etudiant e){
+        return etudiantService.updateEtudiant(e);
+    }
+    @DeleteMapping("/delete/{id}")
+    public void deleteEtudiant(@PathVariable("id") Integer idEtudiant){
+        etudiantService.removeEtudiant(idEtudiant);
+    }
+    @GetMapping("/get/{idE}")
+    public Etudiant getById(@PathVariable("idE") Integer idEtudiant){
+        return etudiantService.retrieveEtudiant(idEtudiant);
+    }
+    @GetMapping("/listE/{idDepart}")
+    List<Etudiant> retrieveAllEtudiants(@PathVariable("idDepart") Integer idDepart){
+        return etudiantService.getEtudiantsByDepartement(idDepart);
+    }
 
 }

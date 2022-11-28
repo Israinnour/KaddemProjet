@@ -15,6 +15,12 @@ public class EtudiantServicesImpl implements IEtudiantServices{
     private final IEtudiantRepository etudiantRepository;
 
     @Override
+    public List<Etudiant> getEtudiantsByDepartement (Integer idDepart){
+
+        return etudiantRepository.findEtudiantsByDepartement(idDepart);
+    }
+
+    @Override
     public List<Etudiant> retrieveAllEtudiants(){
         return (List<Etudiant>) etudiantRepository.findAll();
     }

@@ -1,5 +1,6 @@
 package tn.esprit.kaddemprojet.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ public class Departement implements Serializable {
     @Column(name = "idDepart")
     private Integer idDepart;
     private String nomDepart;
+    @JsonIgnore
     @OneToMany(mappedBy = "departement", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Set<Etudiant> Etudiants;
+    private Set<Etudiant> etudiants;
 }

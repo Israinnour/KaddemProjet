@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IEtudiantServices {
 
+    List<Etudiant> getEtudiantsByDepartement (Integer idDepart);
+
     List<Etudiant> retrieveAllEtudiants();
 
     Etudiant addEtudiant (Etudiant e);

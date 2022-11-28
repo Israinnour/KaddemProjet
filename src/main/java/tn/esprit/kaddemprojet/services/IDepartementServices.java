@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IDepartementServices {
 
+    void assignEtudiantToDepartement (Integer etudiantId, Integer departementId) ;
+
     List<Departement> retrieveAllDepartements();
 
     Departement addDepartement (Departement d);
