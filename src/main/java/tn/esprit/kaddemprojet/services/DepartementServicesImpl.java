@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.kaddemprojet.entities.Departement;
 import tn.esprit.kaddemprojet.entities.Etudiant;
+import tn.esprit.kaddemprojet.entities.Universite;
 import tn.esprit.kaddemprojet.repositories.IDepartementRepository;
 
 import java.util.HashSet;
@@ -19,6 +20,8 @@ public class DepartementServicesImpl implements IDepartementServices {
     private final IDepartementRepository departementRepository;
     @Autowired
     private final IEtudiantServices etudiantService;
+    @Autowired
+    private final IUniversiteServices universiteService;
 
     @Override
     public void assignEtudiantToDepartement (Integer etudiantId, Integer departementId){
@@ -27,8 +30,13 @@ public class DepartementServicesImpl implements IDepartementServices {
         etudiant.setDepartement(departement);
         etudiantService.addEtudiant(etudiant);
         departementRepository.save(departement);
-
-
+    }
+    @Override
+    public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement){
+        Universite universite = universiteService.retrieveUniversite(idUniversite);
+        Departement departement = retrieveDepartement(idDepartement);
+        universite.getDepartements().add(departement);
+        universiteService.addUniversite(universite);
     }
     @Override
     public List<Departement> retrieveAllDepartements() {

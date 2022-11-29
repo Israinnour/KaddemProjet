@@ -12,18 +12,17 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name= "Universite")
 @Getter
 @Setter
-@Entity
-@Table( name = " Departement")
-public class Departement implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Universite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idDepart")
-    private Integer idDepart;
-    private String nomDepart;
+    @Column(name ="idUniv")
+    private Integer idUniv;
+    private String nomUniv;
     @JsonIgnore
-    @OneToMany(mappedBy = "departement", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Set<Etudiant> etudiants;
+    @OneToMany
+    private Set<Departement> departements;
 }
